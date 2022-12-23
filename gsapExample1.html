@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gsap Example 1 - 글씨 나타나기</title>
+
+  <style>
+    .section{
+      min-height: 100vh;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .section-text>span{
+      display: inline-block;
+      /* display: inline에는 transform 애니메이션이 적용되지 않음 */
+      /* 따라서 최소한 display: inline-block;을 적용시켜줄 것 */
+      overflow: hidden;
+    }
+
+    .section-text>span>span{
+      font-size: 5rem;
+      display: inline-block;
+    }
+
+
+  </style>
+</head>
+
+<body> 
+
+  <div class="section">
+    <div class="section-text">
+      <span><span>1</span></span>
+      <span><span>2</span></span>
+      <span><span>3</span></span>
+      <span><span>4</span></span>
+      <span><span>5</span></span>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script>
+
+    let timeline = gsap.timeline({
+      repeat:3,
+      repeatDelay:1,
+    })
+
+    timeline.from('.section-text>span>span',{
+      y: 300,
+      duration:1,
+      stagger: 0.2,
+    })
+
+    timeline.to('.section-text>span>span',{
+      y: -300,
+      duration:0.5,
+      stagger: {
+        each: 0.1,
+        from: "end"
+      },
+    }, "+=1")
+
+  </script>
+</body>
+
+</html>

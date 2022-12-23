@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gsap Example 1 - scroll trigger</title>
+
+    <style>
+        .section {
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: white;
+        }
+
+        .section1 {
+            background-color: red;
+        }
+
+        .section2 {
+            background-color: orange;
+        }
+
+        .section3 {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section section0">
+    </div>
+    <div class="section section1">
+        <div class="box box1"></div>
+    </div>
+    <div class="section section2">
+        <div class="box box2"></div>
+    </div>
+    <div class="section section3">
+        <div class="box box3"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger); // 스크롤 트리거 활성화
+        gsap.from('.box1',{
+            x: 400,
+            duration: 5,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.box1',
+                markers: true,
+                // start: "top 80%"
+                // end: "bottom 20%"
+                toggleActions: "play none reverse reset"
+            },
+        })
+        gsap.from('.box2', {
+            x: 400,
+            duration: 5,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.box2',
+                markers: true,
+                // start: "top 80%"
+                // end: "bottom 20%"
+                toggleActions: "play none reverse reset"
+            },
+        })
+        gsap.from('.box3', {
+            x: 400,
+            duration: 5,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.box3',
+                markers: true,
+                // start: "top 80%"
+                // end: "bottom 20%"
+                toggleActions: "play none reverse reset"
+            },
+        })
+
+    </script>
+</body>
+
+</html>
